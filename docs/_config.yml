@@ -21,8 +21,8 @@
 title: Vue.js Self-Training
 email: your-email@example.com
 description: "A Week-Long Vue.js Learning Plan"
-baseurl: "https://suirita.github.io/Vue.js_self_training/" # the subpath of your site, e.g. /blog
-url: "https://suirita.github.io/Vue.js_self_training/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "Vue.js_self_training/" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username: jekyll
 
