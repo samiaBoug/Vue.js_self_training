@@ -38,9 +38,17 @@ gem install bundler jekyll.
 bundle exec jekyll serve
 ```
 
+6. **Create your branch**
+
+```Shell
+git checkout -b your_name
+```
+
+7. **Create `Realisation` folder**
+
+
 ---
 
 [Activities](https://suirita.github.io/Vue.js_self_training)
 
 ---
-
