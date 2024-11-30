@@ -32,20 +32,25 @@ gem install bundler jekyll.
  cd docs
 ```
 
-5. ** Serve the Site Locally.**
+5. **Serve the Site Locally.**
 
 ```Shell
 bundle exec jekyll serve
 ```
 
-6. **Create your branch**
+6. **Navigate to the root of the project.**
+
+```Shell
+cd docs
+```
+
+7. **Create your branch**
 
 ```Shell
 git checkout -b your_name
 ```
 
-7. **Create `Realisation` folder**
-
+8. **Create `Realisation` folder**
 
 ---
 
