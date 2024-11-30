@@ -43,3 +43,4 @@ bundle exec jekyll serve
 [Activities](https://suirita.github.io/Vue.js_self_training)
 
 ---
+
