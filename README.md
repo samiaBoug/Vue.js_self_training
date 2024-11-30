@@ -37,8 +37,9 @@ gem install bundler jekyll.
 ```Shell
 bundle exec jekyll serve
 ```
+
 ---
 
-[Activities](https://github.io/Suirita/Vue.js_self_training/docs)
+[Activities](https://suirita.github.io/Vue.js_self_training)
 
 ---
