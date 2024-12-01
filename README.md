@@ -17,7 +17,7 @@ _If you don't have Ruby installed, you can download it from the official website
 3. **Ensure you have jekyll installed on your system.**
 
 ```Shell
-gem -v
+jekyll -v
 ```
 
 _If you don't have jekyll installed, you can install it using the following command:_
@@ -26,28 +26,28 @@ _If you don't have jekyll installed, you can install it using the following comm
 gem install bundler jekyll.
 ```
 
-4. **Navigate to the docs folder.**
+4. **Create your branch**
+
+```Shell
+git checkout -b your_name
+```
+
+5. **Navigate to the docs folder.**
 
 ```Shell
  cd docs
 ```
 
-5. **Serve the Site Locally.**
+6. **Change the baseurl in `_config.yml`**
+
+```yml
+baseurl: ""
+```
+
+7. **Serve the Site Locally.**
 
 ```Shell
 bundle exec jekyll serve
-```
-
-6. **Navigate to the root of the project.**
-
-```Shell
-cd docs
-```
-
-7. **Create your branch**
-
-```Shell
-git checkout -b your_name
 ```
 
 8. **Create `Realisation` folder**
