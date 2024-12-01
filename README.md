@@ -23,7 +23,7 @@ jekyll -v
 _If you don't have jekyll installed, you can install it using the following command:_
 
 ```Shell
-gem install bundler jekyll.
+gem install bundler jekyll
 ```
 
 4. **Create your branch**
