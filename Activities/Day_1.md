@@ -101,7 +101,7 @@
      </script>
      ```
 
-5. **Optional Challenge**
+5. **Optional Challenge** 
    - Add a feature to edit tasks in the list.
 
 #### **Estimated Time**: 3–4 hours
