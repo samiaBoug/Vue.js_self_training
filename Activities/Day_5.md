@@ -9,7 +9,7 @@
 1. **Understand the Basics of the Composition API**
    - Learn why the Composition API was introduced in Vue 3 (e.g., better scalability and reusability).
    - Explore the core features:
-     - `ref` for reactive variables.
+     - `ref` for reactive primitives.
      - `reactive` for reactive objects.
      - `computed` for derived state.
      - `watch` and `watchEffect` for reacting to changes.
@@ -20,7 +20,7 @@
 
    - Create a simple counter using `ref`:
 
-     ```javascript
+     ```vue
      <template>
        <div>
          <p>Counter: {{ count }}</p>
@@ -28,19 +28,13 @@
        </div>
      </template>
 
-     <script>
-     import { ref } from 'vue';
+     <script setup>
+     import { ref } from "vue";
 
-     export default {
-       setup() {
-         const count = ref(0);
+     const count = ref(0);
 
-         const increment = () => {
-           count.value++;
-         };
-
-         return { count, increment };
-       },
+     const increment = () => {
+       count.value++;
      };
      </script>
      ```
@@ -51,7 +45,7 @@
 
    - Use `reactive` for more complex state:
 
-     ```javascript
+     ```vue
      <template>
        <div>
          <p>{{ user.name }} ({{ user.age }} years old)</p>
@@ -59,19 +53,13 @@
        </div>
      </template>
 
-     <script>
-     import { reactive } from 'vue';
+     <script setup>
+     import { reactive } from "vue";
 
-     export default {
-       setup() {
-         const user = reactive({ name: 'John Doe', age: 30 });
+     const user = reactive({ name: "John Doe", age: 30 });
 
-         const updateName = () => {
-           user.name = 'Jane Smith';
-         };
-
-         return { user, updateName };
-       },
+     const updateName = () => {
+       user.name = "Jane Smith";
      };
      </script>
      ```
@@ -82,25 +70,19 @@
 
    - Add computed properties to derive values from your state:
 
-     ```javascript
+     ```vue
      <template>
        <div>
          <p>Full Name: {{ fullName }}</p>
        </div>
      </template>
 
-     <script>
-     import { reactive, computed } from 'vue';
+     <script setup>
+     import { reactive, computed } from "vue";
 
-     export default {
-       setup() {
-         const user = reactive({ firstName: 'John', lastName: 'Doe' });
+     const user = reactive({ firstName: "John", lastName: "Doe" });
 
-         const fullName = computed(() => `${user.firstName} ${user.lastName}`);
-
-         return { user, fullName };
-       },
-     };
+     const fullName = computed(() => `${user.firstName} ${user.lastName}`);
      </script>
      ```
 
@@ -110,24 +92,18 @@
 
    - Practice with `watch` to perform side effects:
 
-     ```javascript
-     <script>
-     import { ref, watch } from 'vue';
+     ```vue
+     <script setup>
+     import { ref, watch } from "vue";
 
-     export default {
-       setup() {
-         const count = ref(0);
+     const count = ref(0);
 
-         watch(count, (newVal, oldVal) => {
-           console.log(`Count changed from ${oldVal} to ${newVal}`);
-         });
+     watch(count, (newVal, oldVal) => {
+       console.log(`Count changed from ${oldVal} to ${newVal}`);
+     });
 
-         const increment = () => {
-           count.value++;
-         };
-
-         return { count, increment };
-       },
+     const increment = () => {
+       count.value++;
      };
      </script>
      ```
@@ -167,20 +143,15 @@
 
      Use it in your app:
 
-     ```javascript
+     ```vue
      <template>
        <p>Time: {{ time }} seconds</p>
      </template>
 
-     <script>
-     import { useTimer } from './useTimer';
+     <script setup>
+     import { useTimer } from "./useTimer";
 
-     export default {
-       setup() {
-         const { time } = useTimer();
-         return { time };
-       },
-     };
+     const { time } = useTimer();
      </script>
      ```
 
