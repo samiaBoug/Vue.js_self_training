@@ -1,4 +1,4 @@
-### **Day 4: State Management (Vuex or Pinia)**
+### **Day 4: State Management (Pinia)**
 
 **Objective**: Manage application state efficiently.
 
@@ -7,6 +7,7 @@
 #### **Activities**
 
 1. **Understand the Need for State Management**
+
    - Learn why state management is important in complex apps:
      - Sharing data across components.
      - Managing global state like user authentication, shopping cart, etc.
@@ -15,17 +16,15 @@
 
 ---
 
-2. **Install and Set Up a State Management Library**
-
-   - Choose between **Vuex** or **Pinia** (modern and simpler):
-
-   **For Pinia (recommended)**:
+2. **Install and Set Up Pinia (Recommended State Management Library)**
 
    - Install Pinia:
+
      ```bash
      npm install pinia
      ```
-   - Add it to your project:
+
+   - Add Pinia to your Vue project:
 
      ```javascript
      import { createApp } from "vue";
@@ -37,35 +36,9 @@
      app.mount("#app");
      ```
 
-   **For Vuex**:
-
-   - Install Vuex:
-     ```bash
-     npm install vuex@next
-     ```
-   - Add Vuex to your project:
-
-     ```javascript
-     import { createApp } from "vue";
-     import { createStore } from "vuex";
-     import App from "./App.vue";
-
-     const store = createStore({
-       state: {},
-       mutations: {},
-       actions: {},
-       getters: {},
-     });
-
-     const app = createApp(App);
-     app.use(store);
-     app.mount("#app");
-     ```
-
 ---
 
 3. **Create a Global Store**
-   **Example with Pinia**:
 
    - Define a store (e.g., `src/stores/cart.js`):
 
@@ -76,6 +49,10 @@
        state: () => ({
          items: [],
        }),
+       getters: {
+         totalPrice: (state) =>
+           state.items.reduce((sum, item) => sum + parseFloat(item.price), 0),
+       },
        actions: {
          addItem(item) {
            this.items.push(item);
@@ -87,7 +64,7 @@
      });
      ```
 
-   - Use it in a component:
+   - Use the store in a component:
 
      ```javascript
      import { useCartStore } from "@/stores/cart";
@@ -121,7 +98,7 @@
            </li>
          </ul>
          <button @click="addToCart">Add Random Item</button>
-         <p>Total: ${{ totalPrice }}</p>
+         <p>Total: ${{ cartStore.totalPrice }}</p>
        </div>
      </template>
 
@@ -143,12 +120,6 @@
            return {
              cartStore,
              addToCart,
-             totalPrice: computed(() =>
-               cartStore.items.reduce(
-                 (sum, item) => sum + parseFloat(item.price),
-                 0
-               )
-             ),
            };
          },
        };
@@ -158,6 +129,7 @@
 ---
 
 5. **Optional Challenge**
+
    - Add Vue Router guards to ensure the cart is saved before navigation.
    - Implement persistent state storage using `localStorage` or `sessionStorage`.
 
