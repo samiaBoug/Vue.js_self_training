@@ -8,13 +8,15 @@
 
 1. **Explore Form Validation with VeeValidate**
 
-   - Install VeeValidate:
+   - Install VeeValidate and Yup:
+
      ```bash
      npm install vee-validate yup
      ```
+
    - Validate a simple form:
 
-     ```javascript
+     ```vue
      <template>
        <form @submit.prevent="submitForm">
          <div>
@@ -26,24 +28,18 @@
        </form>
      </template>
 
-     <script>
+     <script setup>
      import { defineRule, useForm, useField } from "vee-validate";
      import * as yup from "yup";
 
      defineRule("required", (value) => !!value || "This field is required");
 
-     export default {
-       setup() {
-         const { handleSubmit } = useForm();
-         const { value: name, errorMessage: errors } = useField("name", "required");
+     const { handleSubmit } = useForm();
+     const { value: name, errorMessage: errors } = useField("name", "required");
 
-         const submitForm = handleSubmit(() => {
-           alert(`Form submitted with name: ${name.value}`);
-         });
-
-         return { name, errors, submitForm };
-       },
-     };
+     const submitForm = handleSubmit(() => {
+       alert(`Form submitted with name: ${name.value}`);
+     });
      </script>
      ```
 
@@ -51,31 +47,35 @@
 
 ---
 
-2. **Explore Component Libraries**
+2.  **Explore Component Libraries**
 
-   - Choose a library like **Vuetify** or **Element Plus**:
-     ```bash
-     npm install vuetify
-     ```
-   - Set up Vuetify in your project and create a sample UI:
+    - Choose a library like **Vuetify** or **Element Plus**:
 
-     ```javascript
-     <template>
-       <v-app>
-         <v-container>
-           <v-btn color="primary">Click Me</v-btn>
-         </v-container>
-       </v-app>
-     </template>
+      ```bash
+      npm install vuetify
+      ```
 
-     <script>
-     export default {
-       name: "App",
-     };
-     </script>
-     ```
+    - Set up Vuetify in your project and create a sample UI:
 
-   - Experiment with buttons, modals, and grids to create an appealing UI.
+           ```vue
+           <template>
+             <v-app>
+               <v-container>
+                 <v-btn color="primary">Click Me</v-btn>
+               </v-container>
+             </v-app>
+           </template>
+
+           <script setup>
+
+      // Ensure Vuetify is properly initialized (refer to the library's latest setup guide)
+      </script>
+
+      ```
+
+      ```
+
+    - Experiment with buttons, modals, and grids to create an appealing UI.
 
 ---
 
@@ -83,7 +83,7 @@
 
    - Add basic transitions:
 
-     ```javascript
+     ```vue
      <template>
        <button @click="show = !show">Toggle</button>
        <transition name="fade">
@@ -91,12 +91,10 @@
        </transition>
      </template>
 
-     <script>
-     export default {
-       data() {
-         return { show: true };
-       },
-     };
+     <script setup>
+     import { ref } from "vue";
+
+     const show = ref(true);
      </script>
 
      <style>
@@ -125,7 +123,7 @@
 
      Example: Fetch data and display a list.
 
-     ```javascript
+     ```vue
      <template>
        <div>
          <ul>
@@ -134,18 +132,16 @@
        </div>
      </template>
 
-     <script>
+     <script setup>
+     import { ref, onMounted } from "vue";
      import axios from "axios";
 
-     export default {
-       data() {
-         return { items: [] };
-       },
-       async mounted() {
-         const response = await axios.get("https://api.example.com/items");
-         this.items = response.data;
-       },
-     };
+     const items = ref([]);
+
+     onMounted(async () => {
+       const response = await axios.get("https://api.example.com/items");
+       items.value = response.data;
+     });
      </script>
      ```
 
